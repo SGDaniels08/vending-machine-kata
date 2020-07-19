@@ -1,6 +1,7 @@
 package com.wccisummer2020;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 public class VendingMachine {
 
