@@ -1,6 +1,8 @@
 package com.wccisummer2020;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +14,23 @@ public class Main {
         Dime userDime = new Dime();
         Quarter userQuarter = new Quarter();
 
-        VendingMachine VM= new VendingMachine(BigDecimal.ZERO);
+        Collection<Product> inventory = new ArrayList<>();
+        Cola cola1 = new Cola();
+        Cola cola2 = new Cola();
+        Cola cola3 = new Cola();
+        Chips chips1 = new Chips();
+        Chips chips2 = new Chips();
+        Candy candy1 = new Candy();
+
+        inventory.add(cola1);
+        inventory.add(cola2);
+        inventory.add(cola3);
+        inventory.add(chips1);
+        inventory.add(chips2);
+        inventory.add(candy1);
+
+
+        VendingMachine VM= new VendingMachine(BigDecimal.ZERO, inventory);
 	while(true){
 	    VM.displayStatus();
         System.out.println("Choose 1 to Insert Coin");
