@@ -48,7 +48,6 @@ public class VendingMachine {
         totalValueInserted = totalValueInserted.add(value);
     }
 
-    /* readCoin(), readUserRequest() */
     public Product selectProduct(String userChoice) {
 
         if (userChoice.equals("1") && totalValueInserted.compareTo(colaCost) >= 0) {
@@ -72,7 +71,11 @@ public class VendingMachine {
             }
         }
 
-        if (userChoice.equals("2") && totalValueInserted.compareTo(chipCost) >= 0) {
+        if (userChoice.equals("2") && totalValueInserted.compareTo(chipCost) > 0) {
+            System.out.println("Exact change only");
+            return null;
+        }
+        else if (userChoice.equals("2") && totalValueInserted.compareTo(chipCost) == 0) {
 
             if (hasChips()) {
                 System.out.println("Thank you");
@@ -85,9 +88,13 @@ public class VendingMachine {
                 }
                 totalValueInserted = BigDecimal.ZERO;
                 return new Chips();
+            } else if (!hasChips()) {
+                System.out.println("Sold out");
+                return null;
             }
-        } else {
-            System.out.println("Sold out");
+
+        } else if (userChoice.equals("2") && totalValueInserted.compareTo(chipCost) < 0) {
+            System.out.println(chipCost);
             return null;
         }
 

@@ -233,4 +233,30 @@ public class VendingMachineTest {
 
     }
 
+    @Test
+    public void ifNotExactChangeAsksForExactChange() {
+        // Arrangement
+        Collection<Product> testInventory = new ArrayList<>();
+        Cola cola1 = new Cola();
+        Cola cola2 = new Cola();
+        Cola cola3 = new Cola();
+        testInventory.add(cola1);
+        testInventory.add(cola2);
+        testInventory.add(cola3);
+
+        Chips chips1 = new Chips();
+        Chips chips2 = new Chips();
+        testInventory.add(chips2);
+        testInventory.add(chips1);
+
+        Candy candy1 = new Candy();
+        testInventory.add(candy1);
+
+        VendingMachine testMachine = new VendingMachine(BigDecimal.ONE, testInventory);
+
+        // Activation and Assertion
+        assertEquals(null, testMachine.selectProduct("2"));
+
+    }
+
 }
